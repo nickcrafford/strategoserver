@@ -1,14 +1,23 @@
-strategoserver
-=====
+# Stratego Game Server
 
-An OTP application
+### Build
+```
+./scripts/build.sh
+```
 
-Build
------
+### Start
+```
+./scripts/start.sh 9091
+```
 
-    $ ./build.sh
+## Docker
 
-Run
------
+### Build
+```
+docker build -t nickcrafford/strategoserver .
+```
 
-    $ ./start.sh 9091
+### Run
+```
+docker run -i -p 9091:9091 nickcrafford/strategoserver
+```

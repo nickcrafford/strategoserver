@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Gather and compile deps
 rm -rf _build
 rm -rf dist
@@ -12,4 +14,3 @@ cd src
 erlc -o ../dist/strategoserver/ebin/ *.erl
 cp *.app ../dist/strategoserver/ebin/
 cp *.hrl ../dist/strategoserver/ebin/
-cd ..

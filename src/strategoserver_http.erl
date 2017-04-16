@@ -148,15 +148,6 @@ serve_request(Req,["rpc","getBoard"],_,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Landing page
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-serve_request(Req,[""],_,_,'GET') ->
-  web_util:respondWithTemplate(Req, "main.html",
-                               create_game_template,
-                               "Welcome to Strategolobby",
-                               [], 200);
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Game created
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 serve_request(Req,["game-created"],_,_,'GET') ->
@@ -174,16 +165,6 @@ serve_request(Req,["board",GameId, GamePlayerId],_,_,'GET') ->
                                "Strategolobby: Game On!",
                                [{gameId, GameId},{gamePlayerId,GamePlayerId}, 
                                 {isBoardPage,true}], 200);
-
-% Leader board
-serve_request(Req,["leaderboard"],_,_,'GET') ->
-
-  Leaders = strategoserver_services:getLeaderBoard(),
- 
-  web_util:respondWithTemplate(Req, "leaderboard.html",
-                               leaderboard_template, 
-                               "Strategolobby: Leaders",
-                               Leaders, 200);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%                               
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Static Files %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -57,4 +57,3 @@ docker run -i -p 9091:9091 nickcrafford/strategoserver
 ## Views
 
 ### GET /board/<game_id>/<game_player_id>/
-

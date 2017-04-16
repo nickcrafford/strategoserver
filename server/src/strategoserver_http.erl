@@ -148,15 +148,6 @@ serve_request(Req,["rpc","getBoard"],_,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Game created
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-serve_request(Req,["game-created"],_,_,'GET') ->
-  web_util:respondWithTemplate(Req, "gameCreated.html",
-                               game_created_template,
-                               "Game Created!",
-                               [], 200);
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Game board
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 serve_request(Req,["board",GameId, GamePlayerId],_,_,'GET') ->
@@ -192,8 +183,4 @@ serve_request(Req,["css",Filename],_,_,'GET') ->
 % 404 -> Not found...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 serve_request(Req,_,_,_,_) ->
-    web_util:respondWithTemplate(Req, "404.html",
-                                 fourofour_template, 
-                                 "StrategoLobby: 404",
-                                 [], 
-                                 404).
+    Req:respond({404, [{"Content-Type", "text/html"}], <<"Not found">>}).

@@ -150,7 +150,12 @@ when IsPlayer1                  >= 0,
   %Store the initial game checksum
   ok = saveGameChecksum(GameId),
 
-  web_util:returnMsg(success, gameCreated, createGame, [{lastMove, TimeStamp}]);
+  web_util:returnMsg(success, gameCreated, createGame, [
+    {lastMove, TimeStamp},
+    {gameId,  list_to_binary(GameId)},
+    {gamePlayerId, list_to_binary(GamePlayerId)},
+    {opposingGamePlayerId, list_to_binary(OpposingGamePlayerId)}
+  ]);
 
 createGame(_,_,_) ->
   web_util:returnMsg(error, couldNotCreateGame, createGame).

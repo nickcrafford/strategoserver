@@ -1,4 +1,4 @@
-# Stratego Game Server
+# Game Server
 
 ### Build
 ```
